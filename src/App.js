@@ -1,39 +1,39 @@
 import logo from './logo.svg';
 import screen from './screen.jpg';
-import user from './user.jpg';
 import './style.css';
 
 
+const link = "https://t.me/RuporInvest_bot";
+
 function MyButton() {
   return (
-      <button type="button" className="btn-nav">
-          <span>Получать уведомления</span>
-      </button>
+      <a href={link} target="_blank"><button type="button" className="btn-nav">
+          <span>Попробовать</span>
+      </button></a>
   );
 }
 
-function MyInput() {
-    return (
-        <input aria-invalid="false" aria-required="true"
-               className="formfield" id="input_1"
-               maxLength="524288" name="input_1" placeholder="Введи название компании или тикер" type="email" value=""></input>
-    );
-}
 
-function MySubmit() {
+const intro = {head: 'Получай новости для сделок первым', subhead: 'Мгновенная доставка новостей по нужным компаниям', info: 'Избавься от необходимости мониторить сотни каналов и новостных сайтов, активируй Telegram-бота «Рупор Инвест»'};
+
+function Intro1(text) {
     return (
-        <button className="formsubmit"
-                id="submit_button" type="submit">Submit</button>
+        <div>
+            <h2>{text.head}</h2>
+            <br />
+            <p><b>{text.subhead}</b><br />
+                {text.info}</p>
+            <MyButton />
+        </div>
     )
 }
-
-const myText = "i text";
-const introImage = "intro-image";
-
-const intro = {head: 'Получай новости для сделок первым', info: '<b>Мгновенная доставка новостей по нужным компаниям</b><br />Избавься от необходимости мониторить сотни каналов и новостных сайтов, активируй Telegram-бота «Рупор Инвест»'};
 function Intro2() {
   return (
-      <img src={screen} className={introImage} />
+      <div className="intro-image">
+          <div className="phone">
+              <img src={screen} className="phone-screen" />
+          </div>
+      </div>
   )
 }
 
@@ -53,52 +53,22 @@ function Kill() {
                 <p>
                     {item.info}
                 </p>
+                {/*<img src={idea} />*/}
             </div>
         )
     }
     return content;
 }
 
-const trial = {head: 'Попробуй настроить бота в один шаг', info: 'Получи больше возможностей для успешных сделок!'};
 
-function Trial2() {
-  return (
-      <div>
-          <div className="form">
-              <MyInput />
-              <MySubmit />
-          </div>
-        <div className="hints">
-          <ul>
-            <li>
-              Газпром
-            </li>
-            <li>
-              POLY
-            </li>
-            <li>
-              AAPL
-            </li>
-          </ul>
-        </div>
-          <MyButton />
-      </div>
-  )
-}
-
-function Feedback() {
+function Trial1(text) {
     return (
-        <div className="feedback">
-            <p>
-                «Я пользуюсь ботом около 2-ух лет, за это время я успел вовремя зайти в сделку около 50 раз, только благодаря оперативным оповещениям»
-            </p><br />
-            <img src={user} /><br />
-            <span>Роман Барсуков, пользователь</span>
-        </div>
+        <div>
+            <h2>{text.head}</h2>
+            <br />
+            <p>{text.info}</p></div>
     )
 }
-
-
 
 const Full = full => {
     return (
@@ -109,10 +79,7 @@ const Full = full => {
 function SplitInHalf (helf, helf2) {
   return (
       <div>
-        <div className="helf">
-          <h2>{helf.head}</h2>
-          <br />
-          <p>{helf.info}</p>
+        <div className="helf">{helf}
         </div><div className="helf">{helf2()}</div>
       </div>
   );
@@ -124,33 +91,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header shownav">
-          <img src={logo} className="App-logo" alt="logo" />
-          <MyButton />
-
-      {/*  <a*/}
-      {/*    className="App-link"*/}
-      {/*    href="https://reactjs.org"*/}
-      {/*    target="_blank"*/}
-      {/*    rel="noopener noreferrer"*/}
-      {/*  >*/}
-      {/*    Learn React*/}
-      {/*    <MyButton />*/}
-      {/*  </a>*/}
-      {/*  <h2>*/}
-      {/*    Попробуй настроить бота в один шаг*/}
-      {/*  </h2>*/}
-      {/*  <MyInput />*/}
-      {/*  {myText}*/}
+          <div>
+              <img src={logo} className="App-logo" alt="logo" />
+              <MyButton />
+          </div>
       </header>
       <main>
 
-          {SplitInHalf(intro, Intro2)}
+          {SplitInHalf(Intro1(intro), Intro2)}
 
           {Full(Kill())}
 
-          {SplitInHalf(trial, Trial2)}
-
-          {Full(<Feedback />)}
       </main>
     </div>
   );

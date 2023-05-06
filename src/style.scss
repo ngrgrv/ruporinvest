@@ -1,19 +1,21 @@
+$base-color: #000;
+$brand-color: rgb(220,45,39);
+$border-dark: rgba($base-color, 0.88);
+
 
 main {
   margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
   text-align: center;
   margin-top: 80px;
 }
+
 
 .shownav {
   animation: fadeInDown 1s ease-in-out;
 }
 
-header {
-  display: flex !important;
-  Justify-content: space-between;
+.App-header {
   position: fixed;
   width: 100%;
   box-sizing: border-box;
@@ -24,6 +26,30 @@ header {
   visibility: visible !important;
   will-change: transform;
   z-index: 2006;
+  animation: fadeInDown 1s ease-in-out;
+}fbu
+
+.App-header .hide {
+  opacity: 0;
+  visibility: hidden !important;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header > div {
+  display: flex !important;
+  Justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 @keyframes fadeInDown {
@@ -60,7 +86,8 @@ header::before {
 }
 
 .btn-nav {
-  background: rgb(0, 0, 0);
+  background: $brand-color;
+
   height: 45px;
   font-size: 16px;
   border-radius: 30px;
@@ -79,6 +106,11 @@ header::before {
   transition: all .3s cubic-bezier(.645,.045,.355,1);
   user-select: none;
   white-space: nowrap;
+}
+
+.btn-nav:hover {
+  background: rgb(0, 0, 0);
+  //color: rgb(0, 0, 0);
 }
 
 .form {
@@ -120,10 +152,19 @@ header::before {
 }
 
 .helf {
-  width: 50%;
   display: inline-block;
   text-align: center;
-  vertical-align: top;
+  vertical-align: middle;
+  margin: 18px 0;
+  width: 100%;
+}
+
+.helf:first-child div {
+  display: inline-block;
+  text-align: left;
+  max-width: 480px;
+  box-sizing: border-box;
+  padding: 0 16px;
 }
 
 .killings {
@@ -186,7 +227,42 @@ header::before {
 }
 
 .intro-image {
-  max-width: 350px;
+  max-height: 520px;
+  overflow-y: hidden;
+  overflow-x: clip;
+}
+
+.phone {
+  position: relative;
+  box-sizing: border-box;
+  padding: 8px;
+  width: 100%;
+  height: calc(360px *2.1);
+  max-width: 360px;
+  display: inline-block;
+  background-size: 360px auto;
+  background-repeat: no-repeat;
+  background-image: url(/src/phone.png);
+}
+
+.phone::before {
+  position: absolute;
+  content: '';
+  width: calc(360px + 250px);
+  height: calc(1208px /1.2);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  background-image: url(/src/shadow.png);
+}
+
+.phone-screen {
+  border-top-left-radius: 70px;
+  border-top-right-radius: 70px;
+  position: relative;
+  max-width: 100%;
+  z-index: -1;
 }
 
 .App-logo {
@@ -201,12 +277,21 @@ header::before {
 }
 
 h2 {
-
+  font-size: 24pt;
+  line-height: 26pt;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .helf {
+    width: 50%;
+    max-width: 680px;
+    overflow-x: clip;
   }
 }
 
