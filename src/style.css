@@ -9,7 +9,7 @@ main {
   animation: fadeInDown 1s ease-in-out;
 }
 
-.App-header {
+header {
   position: fixed;
   width: 100%;
   box-sizing: border-box;
@@ -20,10 +20,13 @@ main {
   visibility: visible !important;
   will-change: transform;
   z-index: 2006;
+}
+
+.shownav {
   animation: fadeInDown 1s ease-in-out;
 }
 
-fbu .App-header .hide {
+header.hide {
   opacity: 0;
   visibility: hidden !important;
 }

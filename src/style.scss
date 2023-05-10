@@ -15,21 +15,24 @@ main {
   animation: fadeInDown 1s ease-in-out;
 }
 
-.App-header {
+header {
   position: fixed;
   width: 100%;
   box-sizing: border-box;
   background: transparent;
   box-shadow: none !important;
   top: 0;
-  transition: opacity .4s ease,transform .4s ease;
+  transition: opacity .4s ease, transform .4s ease;
   visibility: visible !important;
   will-change: transform;
   z-index: 2006;
-  animation: fadeInDown 1s ease-in-out;
-}fbu
+}
 
-.App-header .hide {
+.shownav {
+  animation: fadeInDown 1s ease-in-out;
+}
+
+header.hide {
   opacity: 0;
   visibility: hidden !important;
 }

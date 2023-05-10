@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import screen from './screen.jpg';
 import './style.css';
+import React, { useState, useEffect } from 'react';
 
 
 const link = "https://t.me/RuporInvest_bot";
+
+
+
 
 function MyButton() {
   return (
@@ -85,17 +89,50 @@ function SplitInHalf (helf, helf2) {
   );
 }
 
+let lastScroll = 0;
+class Example extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            header: true
+        }
+    }
+
+
+    componentDidMount() {    window.addEventListener('scroll', this.handleScroll.bind(this));  }  componentDidUpdate() {    window.removeEventListener('scroll', this.handleScroll.bind(this));  }
+
+
+    handleScroll(event) {
+
+
+        if (window.scrollY < lastScroll) {
+            this.setState({header: true});
+        }
+        else if (window.scrollY > lastScroll) {
+            this.setState({header: false});
+        }
+
+        lastScroll = window.scrollY;
+    }
+    render() {
+        return (
+            <header className={this.state.header ? "shownav" : "hide"} >
+                <div>
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <MyButton />
+                </div>
+            </header>
+        );
+    }
+}
+
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header shownav">
-          <div>
-              <img src={logo} className="App-logo" alt="logo" />
-              <MyButton />
-          </div>
-      </header>
+
+        <Example />
       <main>
 
           {SplitInHalf(Intro1(intro), Intro2)}
